@@ -43,9 +43,11 @@ The code for this step is contained in the first and second cells of the IPython
 
 Inspecting sample images
 -----
-I grouped training samples by class first, and then draw the first image of each class with the number of samples for the class as a caption. Please take a look at images following the third cell of the IPython notebook.
+I grouped training samples by class first, and then draw the first image of each class with the number of samples in the class as a caption. The result looks like this:
+[visualization]: ./examples/visualization.png "Visualization"
+![alt text][visualization]
 
-One thing immediately noticeable by looking at the result is sample imbalance. Some classes have as many as ten times more samples than others. This may not be an issue, depending on if the relative frequency of samples reflects how frequently those traffic signs are encountered on the German roads.
+Some classes have as many as ten times more samples than others. This sample imbalance may not be an issue, depending on if the relative frequency of samples reflects how frequently those traffic signs are encountered on the German roads.
 
 
 Preprocessing data
@@ -151,6 +153,17 @@ Using Google image search, I found the following seven images of German traffic 
 | 7_Speed_limit_100km | 7 | Speed limit (100km/h)
 | 25_Road_work.jpg| 25 | Road work
 | 17_No_entry.jpg | 17 | No entry 
+
+[18_General_caution]: ./GermanTrafficSigns/18_General_caution.jpg "18_General_caution"
+[11_Right-of-way_at_the_next_intersection]: ./GermanTrafficSigns/11_Right-of-way_at_the_next_intersection.jpg "11_Right-of-way_at_the_next_intersection"
+[22_Bumpy_road]: ./GermanTrafficSigns/
+[12_Priority_road]: ./GermanTrafficSigns/
+[7_Speed_limit_100km]: ./GermanTrafficSigns/
+[25_Road_work]: ./GermanTrafficSigns/
+[17_No_entry]: ./GermanTrafficSigns/
+
+![alt text][18_General_caution]
+![alt text][11_Right-of-way_at_the_next_intersection]
 
 These are manually cropped square or near-square areas of the original images. Each image contains only an image of the sign and is re-scaled to 32-by-32 pixels in the code.
 
