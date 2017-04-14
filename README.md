@@ -1,7 +1,7 @@
 German Traffic Sign Classifier Project
 =====
 
-The goal of this project is to create a Convolutional Neural Network that is capable of classifying German traffic signs at high accuracy.
+The goal of this project is to create a Convolutional Neural Network that is capable of classifying German traffic signs with high accuracy.
 
 Summary Of Results
 -----
