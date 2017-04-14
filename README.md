@@ -70,7 +70,7 @@ The code for this step is contained in the fourth cod cell of the IPython notebo
 
 Select a base Covolutionan Neural Network architecture
 -----
-By imitating the model architecture described in this [paper by LeCun](http://yann.lecun.com/exdb/publis/pdf/sermanet-ijcnn-11.pdf), I chose the following CNN model architecture.
+By imitating the model architecture described in this [paper by LeCun](http://yann.lecun.com/exdb/publis/pdf/sermanet-ijcnn-11.pdf), I chose the following as my base.
 
 | Processing Layer      |  Description                               | Output Dimension (WxHxD)
 |:----------------------|:-------------------------------------------|:------------------------
@@ -85,22 +85,22 @@ By imitating the model architecture described in this [paper by LeCun](http://ya
 | RELU                  |                                            | 100
 | Fully connected       |                                            | 43
 
-This model produced a respectable 96% validation accuracy. I used this as a default model and went on finding parameters that improve it.
+This model produced a respectable 96% validation accuracy. The next step is to find non-default values for model and training parameters that achieve higher validation accuracies.
 
 The code for this step is contained in the 5th an 15th code cell of the IPython notebook. 
 
 
-Tweak parameters to find the best model
+Tweak model and training parameters for improvement
 -----
 I have made the following model and training parameters easily modifiable from the code.
 
 | Parameter                           | Meaning                                           | Type                | Base (default)
 |:------------------------------------|:--------------------------------------------------|:--------------------|---------------------
-| Sigma                               | Standard deviation of initial values for weights. | Float               | 0.1
-| Convolution layer output depths     | Output depths of convolution layers.              | Vector of integers  | [ 108, 108 ]
-| Fully connected layer output depths | Output depths of fully connected layers.          | Vector of integers  | [100, 43 ]
+| Sigma                               | Standard deviation of initial values for weights  | Float               | 0.1
+| Convolution layer output depths     | Output depths of convolution layers               | Vector of integers  | [ 108, 108 ]
+| Fully connected layer output depths | Output depths of fully connected layers           | Vector of integers  | [100, 43 ]
 | Convolution layer filter size       | Size (width, height) of filter used in conv layers| Integer             | 5
-| Learning rate                       | Learning rate for stochastic gradient decent.     | Float               | 0.001
+| Learning rate                       | Learning rate for stochastic gradient decent      | Float               | 0.001
 | Batch size                          | Number of train samples fed into trainer in a batch| Integer            | 100
 
 (I also made *Epoch* modifiable, but decided to use the value of 30 throughout since I found it to be the "sweet spot" for the data set.)
@@ -117,19 +117,19 @@ Due to time constraints, each run changes only one parameter at a time. If those
 
 The following table shows all values tried and the one that produced the best validation accuracy for each parameter.
 
-| Parameter            | Trail Values | Optimal Value
-|:---------------------|:---------------------------------------------|
-| Sigma         | 0.015, 0.025, 0.05, 0.075, 0.1 (default), 0.15, 0.2 | 0.1
-| Convolution layer output depths  | [27], [54], [108], [216], [27,27], [54,54], [216,216], [27,54], [54,108], [108, 108] (default), [108,216] | [108, 216]
+| Parameter                           | Trail Values                                                  | Optimal Value
+|:------------------------------------|:--------------------------------------------------------------|------------------------
+| Sigma                               | 0.015, 0.025, 0.05, 0.075, 0.1 (default), 0.15, 0.2           | 0.1
+| Convolution layer output depths     | [27], [54], [108], [216], [27,27], [54,54], [216,216], [27,54], [54,108], [108, 108] (default), [108,216] | [108, 216]
 | Fully connected layer output depths | [43], [25,43], [50,43], [150,43], [100, 43] (default), [200,43], [400,43], [200,100,43] | [ 50, 43 ]
-| Convolution layer filter size | 3, 4, 5 (default), 6, 7, 8, 9 | 7
-| Learning rate |  0.00025, 0.0005, 0.00075, 0.001 (default) 0.002, 0.005, 0.0075, 0.01 | 0.0075
-| Batch size | 5, 10, 15, 25, 50, 100 (default), 200, 400 | 100
+| Convolution layer filter size       | 3, 4, 5 (default), 6, 7, 8, 9                                 | 7
+| Learning rate                       | 0.00025, 0.0005, 0.00075, 0.001 (default) 0.002, 0.005, 0.0075, 0.01 | 0.0075
+| Batch size                          | 5, 10, 15, 25, 50, 100 (default), 200, 400                    | 100
 
 With the optimal parameter values, the CNN model produced the following result:
 
 | Accuracy     | Value
-|:-------------|:-------------:|
+|:-------------|-------------:|
 | Train        | 1.000000000
 | Validation   | 0.958730159
 | Test Accuracy| 0.933174980
