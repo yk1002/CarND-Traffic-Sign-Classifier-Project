@@ -154,7 +154,7 @@ Using Google image search, I found the following seven images of German traffic 
 | 25_Road_work.jpg| 25 | Road work | <img src="GermanTrafficSigns/25_Road_work.jpg" width=100>
 | 17_No_entry.jpg | 17 | No entry |<img src="GermanTrafficSigns/17_No_entry.jpg" width=100>
 
-I manually cropped a square (or near-square) area from each original image to extract an image of the sign. Then, each cropped image was scaled to a 32-by-23 squre in the code.
+I manually cropped a square (or near-square) area from each original image to extract an image of the sign. Each cropped image was later scaled to a 32-by-32 squre with code.
 
 The code for this step is contained in the 27th code cell of the IPython notebook.
 
