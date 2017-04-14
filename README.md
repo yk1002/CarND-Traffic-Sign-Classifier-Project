@@ -72,18 +72,18 @@ Select a base Covolutionan Neural Network architecture
 -----
 By imitating the model architecture described in this [paper by LeCun](http://yann.lecun.com/exdb/publis/pdf/sermanet-ijcnn-11.pdf), I chose the following CNN model architecture.
 
-| Processing Layer	|  Parameters & Notes 	| Output Dimension (WxHxD) |
-|:---------------------|:---------------------------------------------| 
-| Input         	| Normalize Grayscale image		        | 32x32x1
+| Processing Layer      |  Description                               | Output Dimension (WxHxD)
+|:----------------------|:-------------------------------------------|:------------------------
+| Input                 | Normalize Grayscale image                  | 32x32x1
 | Convolution           | 5x5 filter size, 1x1 stride, valid padding | 28x28x108
-| RELU			| 				                |28x28x108
-| Max pooling	      	| 2x2 filter size, 2x2 stride |  14x14x108 		|
-| Convolution           | 5x5 filter size, 1x1 stride, valid padding | 10x10x108	|
-| RELU			| 				                |10x10x108	|
-| Max pooling	      	| 2x2 filter size, 2x2 stride | 5x5x108 		|
-| Fully connected	| | 100         				        |
-| RELU			| | 100				                |
-| Fully connected	| | 43        				        |
+| RELU                  |                                            | 28x28x108
+| Max pooling           | 2x2 filter size, 2x2 stride                | 14x14x108
+| Convolution           | 5x5 filter size, 1x1 stride, valid padding | 10x10x108
+| RELU                  |                                            | 10x10x108
+| Max pooling           | 2x2 filter size, 2x2 stride                | 5x5x108
+| Fully connected       |                                            | 100
+| RELU                  |                                            | 100
+| Fully connected       |                                            | 43
 
 This model produced a respectable 96% validation accuracy. I used this as a default model and went on finding parameters that improve it.
 
@@ -94,14 +94,14 @@ Tweak parameters to find the best model
 -----
 I have made the following model and training parameters easily modifiable from the code.
 
-| Parameter            | Meaning | Type | Base (default)
-|:---------------------|:---------------------------------------------|:----------| 
-| Sigma         	| Standard deviation of initial values for weights. | Float | 0.1
-| Convolution layer output depths | Output depths of convolution layers. | Vector of integers | [ 108, 108 ]
-| Fully connected layer output depths | Output depths of fully connected layers. | Vector of integers | [100, 43 ]
-| Convolution layer filter size | Size (width and height) of filter used in conv layers| Integer | 5
-| Learning rate | Learning rate for stochastic gradient decent. | Float | 0.001
-| Batch size | Number of train samples fed into each training run | Integer | 100
+| Parameter                           | Meaning                                           | Type                | Base (default)
+|:------------------------------------|:--------------------------------------------------|:--------------------|---------------------
+| Sigma                               | Standard deviation of initial values for weights. | Float               | 0.1
+| Convolution layer output depths     | Output depths of convolution layers.              | Vector of integers  | [ 108, 108 ]
+| Fully connected layer output depths | Output depths of fully connected layers.          | Vector of integers  | [100, 43 ]
+| Convolution layer filter size       | Size (width, height) of filter used in conv layers| Integer             | 5
+| Learning rate                       | Learning rate for stochastic gradient decent.     | Float               | 0.001
+| Batch size                          | Number of train samples fed into trainer in a batch| Integer            | 100
 
 (I also made *Epoch* modifiable, but decided to use the value of 30 throughout since I found it to be the "sweet spot" for the data set.)
 
