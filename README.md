@@ -47,7 +47,7 @@ I grouped training samples by class first, and then draw the first image of each
 
 <img src="examples/visualization.png" width=400>
 
-Some classes have as many as ten times more samples than others. This sample imbalance may not be an issue, depending on if the relative frequency of samples reflects how frequently those traffic signs are encountered on the German roads.
+Some classes have as many as ten times more samples than others. This sample imbalance may not be an issue, depending on if the relative frequencies of samples reflect how frequently those traffic signs are encountered on the German roads.
 
 
 Preprocessing data
@@ -145,7 +145,7 @@ Find new images from the web
 Using Google image search, I found the following seven images of German traffic signs. 
 
 | Image File     | Class (numerical) | Class (descriptive) | Image | 
-|:-------------|-------------:|----|
+|:-------------|-------------:|----|---|
 | 18_General_caution.jpg | 18 | General caution | <img src="GermanTrafficSigns/18_General_caution.jpg" width=100>
 | 11_Right-of-way_at_the_next_intersection.jpg | 11 | Right of way at the next intersection | <img src="GermanTrafficSigns/11_Right-of-way_at_the_next_intersection.jpg" width=100>
 | 22_Bumpy_road.jpg | 22 | Bumpy road | <img src="GermanTrafficSigns/22_Bumpy_road.jpg" width=100>
