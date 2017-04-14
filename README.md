@@ -45,7 +45,7 @@ Inspecting sample images
 -----
 I grouped training samples by class first, and then draw the first image of each class with the number of samples in the class as a caption. The result looks like this:
 
-![](examples/visualization.png =400x)
+![](examples/visualization.png)
 
 Some classes have as many as ten times more samples than others. This sample imbalance may not be an issue, depending on if the relative frequency of samples reflects how frequently those traffic signs are encountered on the German roads.
 
