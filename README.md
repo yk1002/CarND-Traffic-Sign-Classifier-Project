@@ -45,7 +45,7 @@ Inspecting sample images
 -----
 I grouped training samples by class first, and then draw the first image of each class with the number of samples in the class as a caption. The result looks like this:
 
-![](./examples/visualization.png =400x)
+![](examples/visualization.png =400x)
 
 Some classes have as many as ten times more samples than others. This sample imbalance may not be an issue, depending on if the relative frequency of samples reflects how frequently those traffic signs are encountered on the German roads.
 
@@ -146,13 +146,13 @@ Using Google image search, I found the following seven images of German traffic 
 
 | Image File     | Class (numerical) | Class (descriptive) | Image | 
 |:-------------|-------------:|----|
-| 18_General_caution.jpg | 18 | General caution | ![](./GermanTrafficSigns/18_General_caution.jpg =100x) 
-| 11_Right-of-way_at_the_next_intersection.jpg | 11 | Right of way at the next intersection | ![](./GermanTrafficSigns/11_Right-of-way_at_the_next_intersection.jpg =100x)
-| 22_Bumpy_road.jpg | 22 | Bumpy road | ![](./GermanTrafficSigns/22_Bumpy_road.jpg =100x)
-| 12_Priority_road.jpg | 12 | Priority road | ![](./GermanTrafficSigns/12_Priority_road.jpg =100x)
-| 7_Speed_limit_100km | 7 | Speed limit (100km/h) | ![](./GermanTrafficSigns/7_Speed_limit_100kmh.jpg =100x)
-| 25_Road_work.jpg| 25 | Road work | ![](./GermanTrafficSigns/25_Road_work.jpg =100x)
-| 17_No_entry.jpg | 17 | No entry |![](./GermanTrafficSigns/17_No_entry.jpg =100x)
+| 18_General_caution.jpg | 18 | General caution | ![](GermanTrafficSigns/18_General_caution.jpg =100x) 
+| 11_Right-of-way_at_the_next_intersection.jpg | 11 | Right of way at the next intersection | ![](GermanTrafficSigns/11_Right-of-way_at_the_next_intersection.jpg =100x)
+| 22_Bumpy_road.jpg | 22 | Bumpy road | ![](GermanTrafficSigns/22_Bumpy_road.jpg =100x)
+| 12_Priority_road.jpg | 12 | Priority road | ![](GermanTrafficSigns/12_Priority_road.jpg =100x)
+| 7_Speed_limit_100km | 7 | Speed limit (100km/h) | ![](GermanTrafficSigns/7_Speed_limit_100kmh.jpg =100x)
+| 25_Road_work.jpg| 25 | Road work | ![](GermanTrafficSigns/25_Road_work.jpg =100x)
+| 17_No_entry.jpg | 17 | No entry |![](GermanTrafficSigns/17_No_entry.jpg =100x)
 
 I manually cropped a square (or near-square) area from each original image to extract an image of the sign. Then, each cropped image was scaled to a 32-by-23 squre in the code.
 
