@@ -1,4 +1,4 @@
-German Traffic Sign Recognition Project
+German Traffic Sign Classifier Project
 =====
 
 The goal of this project is to create a Convolutional Neural Network that is capable of classifying German traffic signs at high accuracy.
@@ -19,10 +19,10 @@ Project workflow
 1. Tweak parameters to find the best model.
 1. Classify real-world examples with the best model.
 1. Find new traffic sign images from the web
-1. Predict sign type and analyze performance
-1. Show Softmax probability to access model certainty.
+1. Predict sign types and analyze performance
+1. Show Softmax probabilities to assess model certainty.
 
-Loading Data of German traffic sign images
+Loading German traffic sign image data
 -----
 German traffic sign images were obtained from this URL: https://d17h27t6h515a5.cloudfront.net/topher/2017/February/5898cd6f_traffic-signs-data/traffic-signs-data.zip.
 
@@ -62,21 +62,21 @@ I tried three different preprocessing methods. Here is the result:
 
 The classification accuracies are largely similar (all within 0.3% in validation accuracy). I decided to apply grayscaling and normalization to samples for the following reasons:
 
-1. Grayscaling reduces the number of color channels from three to one, which should quicken training.
+1. Grayscaling reduces the number of color channels from three to one, which should improve training speed.
 2. Normalization for numerical stability.
 
-I did not try any other preprocessing methods.
+I did not try any other preprocessing methods due to time constraints.
 
 The code for this step is contained in the fourth code cell of the IPython notebook.
 
 
 Select a base Covolutionan Neural Network architecture
 -----
-By imitating the model architecture described in this [paper by LeCun](http://yann.lecun.com/exdb/publis/pdf/sermanet-ijcnn-11.pdf), I chose the following as my base.
+By imitating the model architecture described in this [paper by LeCun](http://yann.lecun.com/exdb/publis/pdf/sermanet-ijcnn-11.pdf), I chose the following as my base CNN architecture.
 
 | Processing Layer      |  Description                               | Output Dimension (WxHxD)
 |:----------------------|:-------------------------------------------|:------------------------
-| Input                 | Normalize Grayscale image                  | 32x32x1
+| Input                 | Normalized Grayscale image                 | 32x32x1
 | Convolution           | 5x5 filter size, 1x1 stride, valid padding | 28x28x108
 | RELU                  |                                            | 28x28x108
 | Max pooling           | 2x2 filter size, 2x2 stride                | 14x14x108
@@ -87,9 +87,9 @@ By imitating the model architecture described in this [paper by LeCun](http://ya
 | RELU                  |                                            | 100
 | Fully connected       |                                            | 43
 
-This model produced a respectable 96% validation accuracy. The next step is to find non-default values for model and training parameters that achieve higher validation accuracies.
+This model produced a respectable 96% validation accuracy. In the following step different model parameters were tested to find ones that achieve higher validation accuracies.
 
-The code for this step is contained in the 5th an 15th code cell of the IPython notebook. 
+The code for this step is contained in the 5th an 15th code cells of the IPython notebook. 
 
 
 Tweak model and training parameters for improvement
@@ -107,19 +107,19 @@ I have made the following model and training parameters easily modifiable from t
 
 (I also made *Epoch* modifiable, but decided to use the value of 30 throughout since I found it to be the "sweet spot" for the data set.)
 
-A train-and-test pipeline does the following:
+I designed a train-and-test pipeline to do the following:
 
 1. Take a set of the default parameter values.
 2. Apply a tweak to it. 
-1. Create a model from the tweaked set (sigma, conv. layer depths, full depths, and conv. layer filter size).
-1. Train the model using the tweaked set (learning rate and batch size).
+1. Create a model with the tweaked parameter values (sigma, conv. layer depths, full depths, and conv. layer filter size).
+1. Train the model with the tweaked parameter values (learning rate and batch size).
 1. Calculate train and validation accuracies.
 
-Due to time constraints, each run changes only one parameter at a time. If those parameters are largely independent of each other, the best combination of parameters can be found this way. Interestingly and unfortunately, the assumption did not turn out to be true. Using the parameter values that individually produced the best result did not produce a better result than the default does when used simultaneously!
+Due to time constraints, each run tweaks only one parameter at a time. If those parameters are largely independent of each other, the best combination of parameters can be found this way. Interestingly and unfortunately, the assumption did not turn out to be true. The parameter values that individually produced the best result did not produce a better result than the default values when used simultaneously!
 
-The following table shows all values tried and the one that produced the best validation accuracy for each parameter.
+The following table shows all values tested and the one that produced the best validation accuracy for each parameter.
 
-| Parameter                           | Trail Values                                                  | Optimal Value
+| Parameter                           | Values Tested                                                 | Optimal Value
 |:------------------------------------|:--------------------------------------------------------------|------------------------
 | Sigma                               | 0.015, 0.025, 0.05, 0.075, 0.1 (default), 0.15, 0.2           | 0.1
 | Convolution layer output depths     | [27], [54], [108], [216], [27,27], [54,54], [216,216], [27,54], [54,108], [108, 108] (default), [108,216] | [108, 216]
@@ -134,9 +134,9 @@ With the optimal parameter values, the CNN model produced the following result:
 |:-------------|-------------:|
 | Train        | 1.000000000
 | Validation   | 0.958730159
-| Test Accuracy| 0.933174980
+| Test         | 0.933174980
 
-Interestingly, the validation accuracy of this model is slightly less than that of the default model (0.96). It seems like multiple parameters must be tweaked simultaneously to find a truly best set of values.
+As I have already mentioned, the validation accuracy of this model is slightly less than that of the default model (0.96). It seems like multiple parameters must be tweaked simultaneously to find a truly best set of values.
 
 The code for this step is contained in the 12th and 15th cells of the IPython notebook.
 
@@ -169,16 +169,16 @@ Here is the prediction result for each image
 | 22_Bumpy_road.jpg | 22 | 22 | Yes
 | 12_Priority_road.jpg | 12 | 12| Yes
 | 7_Speed_limit_100km | 7 | 7 | Yes
-| 25_Road_work.jpg| 25 | 20 | No
+| 25_Road_work.jpg| 25 | 20 (Dangerous curve to the right)| No
 | 17_No_entry.jpg | 17 | 17 | Yes
 
-The prediction accuracy is 0.857 (6 out of 7), which is consistent with the test accuracy (0.93) considering the small sample size.
+The prediction accuracy is 0.857 (6 out of 7), which is consistent with the test accuracy (0.93) considering the small sample set.
 
 The code for this step is contained in the 38th and 43rd code cells of the IPython notebook.
 
 Examine Softmax probability to assess model certainty
 -----
-Here is the Top 5 Softmax Probabilities for each image.
+Here is the top 5 Softmax Probabilities for each image.
 
 |ID  | Image File     | Top 5 Softmax Probabilities |
 |- |:-------------|-------------|
