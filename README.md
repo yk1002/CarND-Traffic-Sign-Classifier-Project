@@ -52,7 +52,7 @@ Some classes have as many as ten times more samples than others. This sample imb
 
 Preprocessing data
 -----
-I tried three different preprocessing methods. Here is the result:
+I tried three different preprocessing methods. To compare how they affect classification performance, I used the same, default model and got the following result:
 
 | Preprocessing Method	| Training Accuracy | Validation Accuracy |
 |:---------------------|------------------:|-----------------:| 
